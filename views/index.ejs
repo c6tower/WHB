@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/script.js"></script>
+  </head>
+  <body>
+    <header>
+      <div id="headMenuBtn" class="header-menu-btn" onclick="openMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <nav id="headMenu" class="header-menu-li">
+        <ul>
+          <li><a href="<%= urlHome %>">ホーム</a></li>
+          <li><a href="<%= urlRank %>">ランキング</a></li>
+          <li><a href="<%= urlRule %>">ルールブック</a></li>
+          <li><a href="<%= urlContact %>">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <% var par = ejsfile; %>
+      <%- include(par) %>
+    </main>
+    <footer></footer>
+  </body>
+</html>
