@@ -1,1 +1,18 @@
-<div>PARTIAL SUCCESS!</div>
+<div>
+  <div>
+    <%= msg %>
+  </div>
+  <form method="POST" action="./game">
+    <input type="text" name="predict">
+    <input type="submit" value="SEND">
+  </form>
+  <div>
+    <% for (var i = 0; i < content.length; i++) { %>
+      <div>
+        <span><%= content[i] %></span>
+        <span><%= content1[i] %></span>
+        <span><%= content2[i] %></span>
+      </div>
+    <% } %>
+  </div>
+</div>

@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var session = require('express-session');
+
 // var indexRouter = require('./routes/index');
 var homeRouter = require('./routes/home');
 var playRouter = require('./routes/play');
@@ -12,6 +14,15 @@ var ruleRouter = require('./routes/rule');
 var contactRouter = require('./routes/contact');
 
 var app = express();
+
+// session
+var session_opt = {
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {maxAge: 30 * 60 * 1000}
+};
+app.use(session(session_opt));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
