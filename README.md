@@ -1,6 +1,8 @@
 ## 開発メモ
 * rank
-    * ローカルのPostgreSQLで軽く試す
+    * ローカルのPostgreSQLには接続成功
+    * デザイン整える
+    * git更新する前に、パスワードは消す
     * Heroku Postgres使う、環境変数設定してから、Githubのリポジトリを公開モードにする
     * 環境変数設定するまでは、Githubのリポジトリは非公開にしておくこと！！！
 * clear
