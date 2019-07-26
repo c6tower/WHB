@@ -1,3 +1,4 @@
+<div>HIGH SCORE</div>
 <div>
   <p><%= msg %></p>
 </div>
@@ -10,7 +11,8 @@
   </div>
 <% } %>
 </div>
-<div>
-  <a href="/rank">ランキング</a>
-  <a href="/">ホーム</a>
-</div>
+
+<form method="POST" action="./game/clear">
+  <input type="text" value="NoName" name="uName">
+  <input type="submit" value="SEND">
+</form>

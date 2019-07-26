@@ -30,6 +30,7 @@ var renderData = {
   content: [],
   content1: [],
   content2: [],
+  lvl: 2,
 }
 
 router.get('/easy', function(req, res, next) {
@@ -40,6 +41,7 @@ router.get('/easy', function(req, res, next) {
 
 router.get('/normal', function(req, res, next) {
   selectLv("1", req);
+  renderData.lvl = 1;
   req.session.renderData = renderData;
   req.session.renderData.title = "normal | Word Hit & Blow";
   res.render('index', req.session.renderData);
@@ -47,6 +49,7 @@ router.get('/normal', function(req, res, next) {
 
 router.get('/hard', function(req, res, next) {
   selectLv("0", req);
+  renderData.lvl = 0;
   req.session.renderData = renderData;
   req.session.renderData.title = "hard | Word Hit & Blow";
   res.render('index', req.session.renderData);
@@ -93,49 +96,63 @@ router.post('/game', (req, res, next) => {
   req.session.renderData.content2.push(blow);
   // クリア処理, 継続処理
   if (hit == 4) {
-    //手数
     var hand = req.session.renderData.content.length;
     req.session.renderData.msg = hand;
-    //クリア表示
-    req.session.renderData.ejsfile = './partials/play_clear.ejs';
+    var lv = req.session.renderData.lvl;
     //DB接続
     db.pool.connect(function(err, client) {
       if (err) {
         console.log(err);
       } else {
-        client.query('SELECT name, hands, level FROM rank ORDER BY hands DESC', function(err, result) {
+        var slct = 'SELECT name, hands, level FROM rank WHERE level = ' + lv + 'ORDER BY hands DESC;';
+        client.query(slct, function(err, result) {
           console.log(result.rows);
           var lowest = result.rows[0];
           //ハイスコア更新時
           if (hand <= lowest.hands) {
-            var lv = 2; //レベル
-            var userName = 'NoName' //入力フォーム作る
-            var insrt = "INSERT INTO rank (hands, name, level) VALUES (" + hand + ",'" + userName + "', " + lv + ");"
-            client.query(insrt, function(err, result) {
-              if (err) {
-                console.log(err);
-              }
-            });
-            //ランキング10位未満は削除
-            if (result.rows.length > 10) {
-              var dlt = "DELETE FROM rank WHERE name = '" + lowest.name + "';";
+            if (result.rows.length >= 10) {
+              var dlt = "DELETE FROM rank WHERE name = '" + lowest.name + "' AND level = " + lv + ";";
               client.query(dlt, function(err, result) {
                 if (err) {
                   console.log(err);
                 }
               });
             }
+            req.session.renderData.ejsfile = './partials/play_highscore.ejs';
+            res.render('index', req.session.renderData);
           } else {
             //ハイスコアではないときの処理
+            req.session.renderData.ejsfile = './partials/play_clear.ejs';
+            res.render('index', req.session.renderData);
+            delete req.session.renderData;
           }
         });
       }
     });
-    res.render('index', req.session.renderData);
-    delete req.session.renderData;
   } else {
     res.render('index', req.session.renderData);
   }
+});
+
+router.post('/game/clear', (req, res, next) => {
+  var hand = req.session.renderData.msg;
+  var lv = req.session.renderData.lvl;
+  db.pool.connect((err, client) => {
+    if (err) {
+      console.log(err);
+    } else {
+      var userName = req.body['uName'];
+      var insrt = "INSERT INTO rank (hands, name, level) VALUES (" + hand + ",'" + userName + "', " + lv + ");"
+      client.query(insrt, (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    }
+  });
+  req.session.renderData.ejsfile = './partials/play_clear.ejs';
+  res.render('index', req.session.renderData);
+  delete req.session.renderData;
 });
 
 module.exports = router;
