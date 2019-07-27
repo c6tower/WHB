@@ -144,8 +144,9 @@ router.post('/game/clear', (req, res, next) => {
       console.log(err);
     } else {
       var userName = req.body['uName'];
-      var insrt = "INSERT INTO rank (hands, name, level) VALUES (" + hand + ",'" + userName + "', " + lv + ");"
-      client.query(insrt, (err, result) => {
+      // var insrt = "INSERT INTO rank (hands, name, level) VALUES (" + hand + ",'" + userName + "', " + lv + ");";
+      var insrt = "INSERT INTO rank (hands, name, level) VALUES ($1, $2, $3);"
+      client.query(insrt, [hand, userName, lv], (err, result) => {
         if (err) {
           console.log(err);
         }
