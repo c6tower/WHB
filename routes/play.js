@@ -35,6 +35,8 @@ var renderData = {
 
 router.get('/easy', function(req, res, next) {
   selectLv("2", req);
+  renderData.lvl = 2;
+  renderData.title = "easy | Word Hit & Blow";
   req.session.renderData = renderData;
   res.render('index', req.session.renderData);
 });
@@ -42,16 +44,16 @@ router.get('/easy', function(req, res, next) {
 router.get('/normal', function(req, res, next) {
   selectLv("1", req);
   renderData.lvl = 1;
+  renderData.title = "normal | Word Hit & Blow";
   req.session.renderData = renderData;
-  req.session.renderData.title = "normal | Word Hit & Blow";
   res.render('index', req.session.renderData);
 });
 
 router.get('/hard', function(req, res, next) {
   selectLv("0", req);
   renderData.lvl = 0;
+  renderData.title = "hard | Word Hit & Blow";
   req.session.renderData = renderData;
-  req.session.renderData.title = "hard | Word Hit & Blow";
   res.render('index', req.session.renderData);
 });
 
@@ -104,14 +106,14 @@ router.post('/game', (req, res, next) => {
       if (err) {
         console.log(err);
       } else {
-        var slct = 'SELECT name, hands, level FROM rank WHERE level = ' + lv + 'ORDER BY hands DESC;';
+        var slct = 'SELECT id, name, hands, level FROM rank WHERE level = ' + lv + 'ORDER BY hands DESC;';
         client.query(slct, function(err, result) {
           console.log(result.rows);
           var lowest = result.rows[0];
           //ハイスコア更新時
           if (hand <= lowest.hands) {
             if (result.rows.length >= 10) {
-              var dlt = "DELETE FROM rank WHERE name = '" + lowest.name + "' AND level = " + lv + ";";
+              var dlt = "DELETE FROM rank WHERE id = " + lowest.id + ";";
               client.query(dlt, function(err, result) {
                 if (err) {
                   console.log(err);
