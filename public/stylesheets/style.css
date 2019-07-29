@@ -59,6 +59,7 @@ header{
   transform: translateX(-150px) translateY(0px) rotate(45deg);
 }
 .header-menu-li{
+  display: none;
   transition: 1s;
   width: 150px;
   margin: auto;
@@ -89,6 +90,8 @@ header{
 /* 共通 - main */
 main {
   width: 100%;
+  margin: 0 auto;
+  font-size: 1.5em;
 }
 /* 共通 - footer */
 
@@ -139,4 +142,18 @@ h1{
 }
 .active-select-lv{
   display: block;
+}
+
+
+/* rule.ejs */
+.rule-sec{
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+.rule-sec ol{
+  list-style-type: decimal;
+}
+.rule-sec ul li a{
+  border-bottom: 1px solid #000000;
 }
