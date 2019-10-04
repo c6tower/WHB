@@ -144,6 +144,37 @@ h1{
   display: block;
 }
 
+/* play.ejs */
+.play-main{
+  margin: 0 auto;
+  width: 90%;
+}
+.ans-form{
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+}
+.play-list{
+  width: 100%;
+  display: flex;
+}
+.play-list0{
+  font-weight: bold;
+}
+.play-list span{
+  width: 30%;
+  margin-right: 3%;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* rank.ejs */
+.rank-main{
+  width: 90%;
+  margin: 0 auto;
+}
+.rank-content{
+  margin-bottom: 50px;
+}
 
 /* rule.ejs */
 .rule-sec{

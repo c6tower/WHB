@@ -1,18 +1,24 @@
-<div>HIGH SCORE</div>
-<div>
-  <p><%= msg %></p>
-</div>
-<div>
-<% for (var i = 0; i < content.length; i++) { %>
+<div class="play-main">
+  <div>ハイスコア！！</div>
   <div>
-    <span><%= content[i] %></span>
-    <span><%= content1[i] %></span>
-    <span><%= content2[i] %></span>
+    <p><%= msg %></p>
   </div>
-<% } %>
-</div>
+  <div class="play-list play-list0">
+      <span>WORD</span>
+      <span>HIT</span>
+      <span>BLOW</span>
+  </div>
+  <% for (var i = 0; i < content.length; i++) { %>
+    <div class="play-list">
+      <span><%= content[i] %></span>
+      <span><%= content1[i] %></span>
+      <span><%= content2[i] %></span>
+    </div>
+  <% } %>
 
-<form method="POST" action="./game/clear">
-  <input type="text" value="NoName" name="uName" autocomplete="off">
-  <input type="submit" value="SEND">
-</form>
+  <form method="POST" action="./game/clear">
+    <p>ランキングに載せる名前を入力してください</p>
+    <input type="text" value="NoName" name="uName" autocomplete="off" class="ans-form">
+    <input type="submit" value="SEND">
+  </form>
+</div>

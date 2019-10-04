@@ -1,30 +1,35 @@
-<p>RANK!!!</p>
-<div>
-  <% for (var i = 0; i < listE.length; i++) { %>
-    <div>
-      <span><%= i+1 %></span>
-      <span><%= listE[i].name %></span>
-      <span><%= listE[i].hands %></span>
-    </div>
-  <% } %>
-</div>
+<div class="rank-main">
+  <h2>ランキング一覧</h2>
+  <div class="rank-content">
+    <h3>EASY</h3>
+    <% for (var i = 0; i < listE.length; i++) { %>
+      <div>
+        <span><%= i+1 %></span>
+        <span><%= listE[i].name %></span>
+        <span><%= listE[i].hands %></span>
+      </div>
+    <% } %>
+  </div>
 
-<div>
-  <% for (var i = 0; i < listN.length; i++) { %>
-    <div>
-      <span><%= i+1 %></span>
-      <span><%= listN[i].name %></span>
-      <span><%= listN[i].hands %></span>
-    </div>
-  <% } %>
-</div>
+  <div class="rank-content">
+    <h3>NORMAL</h3>
+    <% for (var i = 0; i < listN.length; i++) { %>
+      <div>
+        <span><%= i+1 %></span>
+        <span><%= listN[i].name %></span>
+        <span><%= listN[i].hands %></span>
+      </div>
+    <% } %>
+  </div>
 
-<div>
-  <% for (var i = 0; i < listH.length; i++) { %>
-    <div>
-      <span><%= i+1 %></span>
-      <span><%= listH[i].name %></span>
-      <span><%= listH[i].hands %></span>
-    </div>
-  <% } %>
+  <div class="rank-content">
+    <h3>HARD</h3>
+    <% for (var i = 0; i < listH.length; i++) { %>
+      <div>
+        <span><%= i+1 %></span>
+        <span><%= listH[i].name %></span>
+        <span><%= listH[i].hands %></span>
+      </div>
+    <% } %>
+  </div>
 </div>

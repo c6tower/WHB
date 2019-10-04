@@ -1,18 +1,23 @@
-<div>
+<div class="play-main">
   <div>
     <%= msg %>
   </div>
   <form method="POST" action="./game">
-    <input type="text" name="predict" pattern="[a-z]{4}" autocomplete="off">
+    <input type="text" name="predict" pattern="[a-z]{4}" autocomplete="off" placeholder="入力" class="ans-form">
     <input type="submit" value="SEND">
   </form>
-  <div>
+  <div class="play-list play-list0">
+    <span>WORD</span>
+    <span>HIT</span>
+    <span>BLOW</span>
+  </div>
+  <!-- <div class="play-list"> -->
     <% for (var i = 0; i < content.length; i++) { %>
-      <div>
+      <div class="play-list">
         <span><%= content[i] %></span>
         <span><%= content1[i] %></span>
         <span><%= content2[i] %></span>
       </div>
     <% } %>
-  </div>
+  <!-- </div> -->
 </div>

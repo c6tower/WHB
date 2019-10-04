@@ -26,7 +26,7 @@ var renderData = {
   urlRule: "/rule",
   urlContact: "/contact",
   ejsfile: './partials/play.ejs',
-  msg: "半角英字で入力してください",
+  msg: "4文字の半角英字を入力してくだい",
   content: [],
   content1: [],
   content2: [],
@@ -92,7 +92,7 @@ router.post('/game', (req, res, next) => {
   blow -= hit;
   console.log(hit);
   console.log(blow);
-  req.session.renderData.msg = "半角英字で入力してください";
+  req.session.renderData.msg = "4文字の半角英字を入力してくだい";
   req.session.renderData.content.push(pre);
   req.session.renderData.content1.push(hit);
   req.session.renderData.content2.push(blow);

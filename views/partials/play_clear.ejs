@@ -1,16 +1,21 @@
-<div>
-  <p><%= msg %></p>
-</div>
-<div>
-<% for (var i = 0; i < content.length; i++) { %>
+<div class="play-main">
   <div>
-    <span><%= content[i] %></span>
-    <span><%= content1[i] %></span>
-    <span><%= content2[i] %></span>
+    <p><%= msg %></p>
   </div>
-<% } %>
-</div>
-<div>
-  <a href="/rank">ランキング</a>
-  <a href="/">ホーム</a>
+  <div class="play-list play-list0">
+    <span>WORD</span>
+    <span>HIT</span>
+    <span>BLOW</span>
+  </div>
+  <% for (var i = 0; i < content.length; i++) { %>
+    <div class="play-list">
+      <span><%= content[i] %></span>
+      <span><%= content1[i] %></span>
+      <span><%= content2[i] %></span>
+    </div>
+  <% } %>
+  <div>
+    <a href="/rank">ランキング</a>
+    <a href="/">ホーム</a>
+  </div>
 </div>
