@@ -1,0 +1,3 @@
+- color
+  - #801E6C
+  - #BBBBBB
