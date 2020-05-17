@@ -1,5 +1,21 @@
 /* 初期化 */
-body, header, main, footer, section, div, nav, p, a, h1, h2, h3, h4, ul, ol, li, form, input, span {
+body,
+header,
+main,
+footer,
+div,
+nav,
+p,
+a,
+h1,
+h2,
+h3,
+ul,
+ol,
+li,
+form,
+input,
+span {
   border: none;
   margin: 0;
   padding: 0;
@@ -9,7 +25,9 @@ body {
   font-size: 62.5%;
 }
 
-a, a:visited, a:hover {
+a,
+a:visited,
+a:hover {
   color: #000000;
   text-decoration: none;
 }
@@ -18,7 +36,8 @@ main {
   display: block;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -49,10 +68,9 @@ header {
   cursor: pointer;
   height: 30px;
   padding: 10px;
-  margin: auto;
-  margin-top: 0;
-  margin-right: 0;
-  position: relative;
+  position: fixed;
+  right: 0;
+  top: 0;
   width: 30px;
   z-index: 10;
 }
@@ -90,9 +108,7 @@ header {
   display: none;
   font-size: 2em;
   height: 100%;
-  margin: auto;
-  margin-right: 0;
-  position: absolute;
+  position: fixed;
   right: 0px;
   top: 0;
   width: 150px;
@@ -133,70 +149,108 @@ header {
 
 /* 共通 - main */
 main {
-  width: 100%;
-  margin: 0 auto;
   font-size: 1.5em;
+  margin: 0 auto;
+  padding: 10px;
+  width: 90%;
+  width: -webkit-calc(100% - 20px);
+  width: calc(100% -20px);
 }
 
+@media screen and (min-width: 960px) {
+  main {
+    width: 80%;
+  }
+}
 
+.main-content {
+  margin: 0 auto;
+  margin-top: 75px;
+}
+
+.section-title {
+  border-left: solid 5px #801E6C;
+  color: #801E6C;
+  font-size: 1.5em;
+  padding-left: 10px;
+}
 
 /* 共通 - footer */
 
 
 
 /* home.ejs */
-@keyframes RightLeft {
-  0% {
-      opacity: 0;
-      transform: translateX(10px);
-  }
-  100% {
-      opacity: 1;
-      transform: translateX(0);
-  }
-}
 
-h2 {
+.home-select-lv {
   margin-top: 50px;
-  margin-bottom: 50px;
-  text-align: center;
-  font-size: 3em;
-  animation-name: RightLeft;
-  animation-duration: 2s;
 }
 
-.home-word {
-  text-align: center;
-  font-size: 2.4em;
-  animation-name: RightLeft;
-  animation-duration: 2s;
-}
-
-.active-home-word {
-  display: none;
-}
-
-.select-lv {
-  width: 99%;
-  margin: 0 auto;
-  display: none;
-}
-
-.select-lv ul {
+.home-select-lv {
   display: flex;
+  justify-content: space-around;
 }
 
-.select-lv ul li {
-  width: 28%;
-  margin: 3%;
+.home-select-lv li {
+  border: solid 1px #801E6C;
+  font-size: 1.2em;
   text-align: center;
-  font-size: 2em;
-  animation-name: RightLeft;
-  animation-duration: 2s;
+  padding: 5px;
+  width: 25%;
 }
 
-.active-select-lv {
+.home-select-lv li a {
+  color: #801E6C;
+}
+
+.home-rank {
   display: block;
+  margin-top: 50px;
+}
+
+@media screen and (min-width: 960px) {
+  .home-rank {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.home-rank li {
+  display: flex;
+  font-size: 1.2em;
+  margin: 0 auto;
+  width: 90%;
+}
+
+@media screen and (min-width: 960px) {
+  .home-rank li {
+    width: 25%;
+  }
+}
+
+.home-rank li:nth-child(2),
+.home-rank li:nth-child(3) {
+  padding-top: 20px;
+}
+
+@media screen and (min-width: 960px) {
+  .home-rank li:nth-child(2),
+  .home-rank li:nth-child(3) {
+    padding-top: 0;
+  }
+}
+
+.home-rank li div:nth-child(1) {
+  width: 150px;
+}
+
+.home-rank-link {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.home-rank-link a {
+  border-bottom: solid 1px #801E6C;
+  color: #801E6C;
 }
 
 
