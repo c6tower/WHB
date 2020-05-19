@@ -164,6 +164,7 @@ main {
 }
 
 .main-content {
+  font-size: 1.2em;
   margin: 0 auto;
   margin-top: 75px;
 }
@@ -192,7 +193,6 @@ main {
 
 .home-select-lv li {
   border: solid 1px #801E6C;
-  font-size: 1.2em;
   text-align: center;
   padding: 5px;
   width: 25%;
@@ -216,7 +216,6 @@ main {
 
 .home-rank li {
   display: flex;
-  font-size: 1.2em;
   margin: 0 auto;
   width: 90%;
 }
@@ -251,6 +250,27 @@ main {
 .home-rank-link a {
   border-bottom: solid 1px #801E6C;
   color: #801E6C;
+}
+
+.home-rule {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 95%;
+}
+
+.home-rule > ol {
+  list-style-type: decimal;
+  margin-top: 25px;
+  padding-left: 20px;
+}
+
+.home-rule li {
+  margin-top: 10px;
+}
+
+.home-rule img {
+  height: auto;
+  width: 100%;
 }
 
 
